@@ -263,22 +263,15 @@ function Navbar({ home=false, navbar, setNavbar, active }) {
           <>
             <ListItem disablePadding>
               <ListItemButton onClick={handleSIgnUp}>
-                <ListItemIcon>
-                  <ListItemAvatar></ListItemAvatar>
-                </ListItemIcon>
-                <ListItemText primary="Sign Up" />
+                <h6 style={{fontFamily:"Chivo Mono", marginBottom:0}}>Sign Up</h6>
               </ListItemButton>
             </ListItem>
             <Divider />
             <ListItem disablePadding>
               <ListItemButton onClick={handleSignIn}>
-                <ListItemIcon>
-                  <ListItemAvatar></ListItemAvatar>
-                </ListItemIcon>
-                <ListItemText primary="Sign In" />
+                <h6 style={{fontFamily:"Chivo Mono", marginBottom:0}}>Sign In</h6>
               </ListItemButton>
             </ListItem>
-            <Divider />
           </>
         )}
       </List>
@@ -310,7 +303,7 @@ function Navbar({ home=false, navbar, setNavbar, active }) {
       </Box>
 
       <ButtonGroup sx={{ display: "flex", alignItems: "center" }}>
-        <IconButton
+        {home ? <></>: <IconButton
           sx={{
             display: { md: "none", xs: "block" },
             "&:focus": { outline: "none" },
@@ -321,7 +314,7 @@ function Navbar({ home=false, navbar, setNavbar, active }) {
           aria-haspopup="true"
         >
           <SearchIcon sx={{ color: "black", fontSize: "1.3em" }} />
-        </IconButton>
+        </IconButton>}
         {!user && (
           <IconButton
             sx={{ "&:focus": { outline: "none" } }}
@@ -363,44 +356,7 @@ function Navbar({ home=false, navbar, setNavbar, active }) {
           </Badge>
         </IconButton>
 
-        <IconButton
-          sx={{ display: { md: "none" }, "&:focus": { outline: "none" } }}
-          onClick={() => setOpen(true)}
-        >
-          <DehazeIcon sx={{ color: "black", fontSize: "1.3em" }} />
-        </IconButton>
       </ButtonGroup>
-      <MuiDrawer
-        open={open}
-        close={handleDrawerClose}
-        handleClose={handleDrawerClose}
-        productNav={() => {
-          handleProductNavigate();
-        }}
-        brandNav={() => handleBrandNav()}
-        cartNav={() => {
-          handleCartNavigate();
-        }}
-        profileNav={() => {
-          handleProfileNav();
-        }}
-        logOutNav={() => {
-          logoutHandler();
-        }}
-        signUpNav={() => {
-          handleSIgnUp();
-        }}
-        orderNav={() => handleOrderNavigate()}
-        homeNav={() => handleHomeNavigate()}
-        signInNav={() => handleSignIn()}
-        adminNav={() => handleAdminNavigate()}
-        sellerNav={() => handleSellerNavigate()}
-        adminBookNav={() => bookNavigate()}
-        newBookNavigate={() => newBookNavigate()}
-        OrderNavigate={() => OrderNavigate()}
-        userNavigate={() => userNavigate()}
-        sellerNavigate={() => sellerNavigate()}
-      />
       <SearchDrawer anchor="top" open={openSearch}>
         <Stack
           direction="row"
